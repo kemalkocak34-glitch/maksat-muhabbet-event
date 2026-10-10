@@ -5,8 +5,10 @@ import { getSiteContent } from '@/lib/site-content';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Rezervasyon | Maksat Muhabbet',
-  description: 'Maksat Muhabbet’te yerinizi ayırtın. Talebiniz WhatsApp üzerinden bize ulaşır.',
+  title: 'Rezervasyon | Beyoğlu Rakı Sofrası ve Etkinlik | Maksat Muhabbet',
+  description:
+    'Taksim’e ve Nevizade’ye yürüme mesafesindeki Maksat Muhabbet’te rakı sofrası ve etkinlik rezervasyonu. Talebiniz WhatsApp üzerinden bize ulaşır.',
+  alternates: { canonical: '/rezervasyon' },
 };
 
 export default async function RezervasyonPage() {
