@@ -10,6 +10,9 @@ import EventGallery from '@/components/event-gallery';
 import Image from 'next/image';
 import { Calendar, Clock, Users, Utensils } from 'lucide-react';
 import { getSiteContent } from '@/lib/site-content';
+import { CONTACT } from '@/content/site';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.maksatmuhabbetevent.com';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -21,12 +24,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const event = await getEventBySlug(decodeURIComponent(slug));
   if (!event) return { title: 'Etkinlik bulunamadı | Maksat Muhabbet' };
+  const when = new Date(event.date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', timeZone: 'Europe/Istanbul' });
+  const description = `${event.shortDescription} ${when}, Maksat Ocakbaşı Teras, Beyoğlu. Taksim’e ve Nevizade’ye yürüme mesafesinde.`;
   return {
-    title: `${event.title} | Maksat Muhabbet`,
-    description: event.shortDescription,
+    title: `${event.title} | ${when}, Beyoğlu Etkinlik`,
+    description,
+    alternates: { canonical: `/etkinlikler/${event.slug}` },
     openGraph: {
       title: event.title,
-      description: event.shortDescription,
+      description,
       images: [event.imageUrl ?? '/og-image.png'],
     },
   };
@@ -46,8 +52,48 @@ export default async function EventDetailPage({ params }: Props) {
   const dayStr = d.toLocaleDateString('tr-TR', { weekday: 'long', timeZone: 'Europe/Istanbul' });
   const timeStr = d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Istanbul' });
 
+  // Google'ın etkinliği tarih ve mekânıyla tanıması için yapılandırılmış veri (schema.org Event)
+  const eventUrl = `${SITE_URL}/etkinlikler/${event.slug}`;
+  const jsonLd: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: event.title,
+    description: event.shortDescription,
+    startDate: event.date,
+    ...(event.endTime ? { endDate: `${event.date.slice(0, 11)}${event.endTime}:00${event.date.slice(19)}` } : {}),
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    image: [`${SITE_URL}${event.imageUrl ?? '/og-image.png'}`],
+    url: eventUrl,
+    location: {
+      '@type': 'Place',
+      name: 'Maksat Ocakbaşı Teras',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: CONTACT.addressLines[0],
+        postalCode: '34435',
+        addressLocality: 'Beyoğlu',
+        addressRegion: 'İstanbul',
+        addressCountry: 'TR',
+      },
+    },
+    organizer: { '@type': 'Organization', name: 'Maksat Muhabbet Event', url: SITE_URL },
+    ...(event.price > 0
+      ? {
+          offers: {
+            '@type': 'Offer',
+            price: event.price,
+            priceCurrency: 'TRY',
+            url: eventUrl,
+            availability: closed ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
+          },
+        }
+      : {}),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PublicHeader />
       <main className="pt-20 min-h-screen">
         {/* HERO */}
