@@ -16,6 +16,7 @@ export interface SiteEvent {
   soldOut?: boolean; // true ise "Doldu" yazar, rezervasyon kapanır
   endTime?: string; // bitiş saati, örn. '23:45'; yazılırsa saat "18:30 - 23:45" görünür
   priceLabel?: string; // yazılırsa fiyat yerine bu metin görünür, örn. 'Özel Davet'
+  priceDetail?: string; // etkinlik sayfasında fiyatın altında/yerinde görünen açıklama, örn. 'Havale & EFT: 4.100 ₺ | Kredi Kartı: 4.300 ₺'
   includedHeading?: string; // "Neler Dahil" başlığı yerine bu etkinliğe özel başlık
   linkUrl?: string; // yazılırsa karttaki bağlantı etkinlik sayfası yerine buraya gider, örn. '/rezervasyon'
   gallery?: string[]; // etkinlikten kareler; görseller public/events/<slug>/ klasörüne konur
@@ -27,15 +28,17 @@ export const EVENTS: SiteEvent[] = [
     title: 'Anason Rehberliğinde Bize Kalan Miras Sofralar',
     slug: 'anason-rehberliginde-bize-kalan-miras-sofralar',
     description:
-      'Birlikte Yiyelim, Birlikte İçelim. Maksat Muhabbet Olsun!\n\nYeni dostlukların yeşerdiği, hikâyelerin paylaşıldığı, zamanın yavaşladığı ve paylaşmanın zarafetinin hissedildiği özel akşamlar vardır.\n\n16 Ekim’de, Maksat Ocakbaşı’nın açık hava terasında Anadolu’nun köklü sofra kültürünü ve muhabbetin en sıcak halini aynı masada buluşturuyoruz. Bize Kalan Miras Sofralar’da sadece bir akşam yemeğine değil; sofra adabını, birlikte olmanın keyfini ve gerçek bağları yeniden hatırlayacağımız unutulmaz bir gastronomi deneyimine davetlisiniz!\n\nAnason kokusunun eşlik ettiği geleneksel lezzetler, mevsimin en taze ürünleri, bitmeyen sohbetler ve hep birlikte mırıldanacağımız güzel şarkılar sizi bekliyor. Geceye canlı müzik eşlik edecek.\n\nBuluşma Noktası: Maksat Ocakbaşı Teras, Beyoğlu Balıkpazarı. Taksim ve Şişhane Metro Durağına eşit, yürüme mesafesindedir.\n\nKontenjanımız sınırlıdır. Rezervasyon ile katılım sağlanacaktır.',
+      'Birlikte Yiyelim, Birlikte İçelim. Maksat Muhabbet Olsun!\n\nYeni dostlukların yeşerdiği, hikâyelerin paylaşıldığı, zamanın yavaşladığı ve paylaşmanın zarafetinin hissedildiği özel akşamlar vardır. 16 Ekim’de, Maksat Ocakbaşı’nın açık hava terasında Anadolu’nun köklü sofra kültürünü ve muhabbetin en sıcak halini aynı masada buluşturuyoruz. Bize Kalan Miras Sofralar’da sadece bir akşam yemeğine değil; sofra adabını, birlikte olmanın keyfini ve gerçek bağları yeniden hatırlayacağımız unutulmaz bir gastronomi deneyimine davetlisiniz! Anason kokusunun eşlik ettiği geleneksel lezzetler, mevsimin en taze ürünleri, bitmeyen sohbetler ve hep birlikte mırıldanacağımız güzel şarkılar sizi bekliyor.\n\nCanlı Müzik “By Terzi”',
     shortDescription: 'Canlı müzik, anason eşliğinde geleneksel lezzetler ve Anadolu’nun köklü sofra kültürü.',
     date: '2026-10-16T18:30:00+03:00',
     endTime: '23:45',
-    price: 4000,
+    price: 4100,
+    priceLabel: '₺4.100 / ₺4.300',
+    priceDetail: 'Havale & EFT: 4.100 ₺ | Kredi Kartı: 4.300 ₺',
     capacity: 0,
-    includedHeading: 'Menü',
+    includedHeading: 'Gecenin Menüsü & Eşlikçileri',
     whatsIncluded:
-      'Başlangıç: Mevsim Kavunu, Beyaz Leblebi, Sıcak Pide, Tulum Peyniri, Tereyağı\nMezeler: Domates Kurusu, Patlıcan Salatası, Girit Ezmesi, Pilaki, Fava, Maksat Özel Salata\nAra Sıcak: Fındık Lahmacun\nAna Yemek: Adana Kebap, Çöp Şiş, Tavuk Şiş\nTatlı: Maksat Özel Tatlı\n\nMenü, 4 kişilik paylaşımlı servis sunulacaktır. 20cl kişi başı anason servis edilecektir.\n\nCanlı Müzik',
+      'Başlangıç: Mevsim Kavunu, Beyaz Leblebi, Sıcak Pide, Tulum Peyniri, Tereyağı\nMezeler: Domates Kurusu, Patlıcan Salatası, Girit Ezmesi, Pilaki, Fava, Maksat Özel Salata\nAra Sıcak: Fındık Lahmacun\nAna Yemek: Adana Kebap, Çöp Şiş, Tavuk Şiş\nTatlı: Maksat Özel Tatlı\n\nMenü, 4 kişilik paylaşımlı servis sunulacaktır. 20cl kişi başı anason servis edilecektir.',
     imageUrl: '/events/miras-sofralar/kapak.jpg',
     isActive: true,
   },

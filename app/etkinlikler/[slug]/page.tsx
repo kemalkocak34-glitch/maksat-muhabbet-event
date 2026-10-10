@@ -95,7 +95,9 @@ export default async function EventDetailPage({ params }: Props) {
 
               {/* Fiyat */}
               <div className="flex items-baseline gap-2">
-                {event.priceLabel ? (
+                {event.priceDetail ? (
+                  <span className="serif text-2xl sm:text-3xl font-semibold text-[#C9A84C]">{event.priceDetail}</span>
+                ) : event.priceLabel ? (
                   <span className="serif text-3xl font-semibold text-[#C9A84C]">{event.priceLabel}</span>
                 ) : (
                   <>
