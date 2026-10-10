@@ -17,6 +17,7 @@ export interface SiteEvent {
   endTime?: string; // bitiş saati, örn. '23:45'; yazılırsa saat "18:30 - 23:45" görünür
   priceLabel?: string; // yazılırsa fiyat yerine bu metin görünür, örn. 'Özel Davet'
   includedHeading?: string; // "Neler Dahil" başlığı yerine bu etkinliğe özel başlık
+  linkUrl?: string; // yazılırsa karttaki bağlantı etkinlik sayfası yerine buraya gider, örn. '/rezervasyon'
   gallery?: string[]; // etkinlikten kareler; görseller public/events/<slug>/ klasörüne konur
 }
 
@@ -30,8 +31,7 @@ export const EVENTS: SiteEvent[] = [
     shortDescription: 'Anadolu’nun köklü sofra kültürü, anason eşliğinde geleneksel lezzetler ve bitmeyen sohbetler.',
     date: '2026-10-16T18:30:00+03:00',
     endTime: '23:45',
-    price: 0,
-    priceLabel: 'Rezervasyonlu',
+    price: 4000,
     capacity: 0,
     includedHeading: 'Menü',
     whatsIncluded:
@@ -78,6 +78,8 @@ export const EVENTS: SiteEvent[] = [
     shortDescription: 'Fasıl ezgileri, paylaşmalık mezeler ve uzun bir İstanbul gecesi.',
     date: '2026-11-15T20:30:00+03:00',
     price: 850,
+    priceLabel: 'Rezervasyonlu',
+    linkUrl: '/rezervasyon',
     capacity: 40,
     whatsIncluded:
       'Soğuk Mezeler: Peynir, kavun, ocaktan köz, Girit ezmesi, yoğurtlu semizotu, domates kurusu, Maksat salatası\nAra Sıcak: Fındık lahmacun\nAna Yemek: Adana, çöp şiş, yağlı kara\nTatlı & Meyve: Maksat tatlısı, mevsim meyveleri\nBeylerbeyi Rakıları Eşliğinde\nCanlı fasıl müziği',
@@ -93,6 +95,8 @@ export const EVENTS: SiteEvent[] = [
     shortDescription: 'Ustanın seçkisi, mevsim mezeleri ve eşleşen içeceklerle özel menü.',
     date: '2026-11-22T19:30:00+03:00',
     price: 1150,
+    priceLabel: 'Rezervasyonlu',
+    linkUrl: '/rezervasyon',
     capacity: 30,
     whatsIncluded:
       'Hoş Geldin İçeceği\nSoğuk Meze Tabağı (8 çeşit)\nAra Sıcak: Fındık lahmacun, içli köfte\nAna Yemekler: Kuşbaşı, kaburga, beyti\nTatlı: Künefe\nLimitli şarap eşliği',
@@ -108,6 +112,8 @@ export const EVENTS: SiteEvent[] = [
     shortDescription: 'Ateş başında sohbet, şefin sürpriz tabakları ve akustik performans.',
     date: '2026-12-01T20:00:00+03:00',
     price: 950,
+    priceLabel: 'Rezervasyonlu',
+    linkUrl: '/rezervasyon',
     capacity: 35,
     whatsIncluded:
       'Şefin Sürpriz Mezeleri\nOcakbaşı Karışık Et Seçkisi\nAkustik Müzik Performansı\nRakı veya Şarap (sınırsız)\nMevsim Tatlısı',
