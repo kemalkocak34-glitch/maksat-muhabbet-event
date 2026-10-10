@@ -4,7 +4,12 @@ import PublicFooter from '@/components/public-footer';
 import GalleryClient from '@/components/gallery-client';
 import { getSiteContent } from '@/lib/site-content';
 
-export const metadata = { title: 'Galeri \u2014 Maksat Muhabbet' };
+export const metadata = {
+  title: 'Galeri | Beyoğlu Nostalji ve Rakı Sofrası Kareleri | Maksat Muhabbet',
+  description:
+    'Maksat Ocakbaşı’nın Beyoğlu’ndaki terasından kareler: rakı sofraları, etkinlik geceleri ve Beyoğlu nostaljisini yaşatan mekân.',
+  alternates: { canonical: '/galeri' },
+};
 
 export default async function GaleriPage() {
   const c = await getSiteContent();
