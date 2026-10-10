@@ -6,7 +6,12 @@ import PublicFooter from '@/components/public-footer';
 import EventsClient from '@/components/events-client';
 import { getSiteContent } from '@/lib/site-content';
 
-export const metadata = { title: 'Etkinlikler | Maksat Muhabbet' };
+export const metadata = {
+  title: 'Beyoğlu ve Taksim Etkinlikleri | Rakı Sofrası Geceleri | Maksat Muhabbet',
+  description:
+    'Taksim ve Beyoğlu etkinlik takvimi: Nevizade’nin yanı başında rakı sofrası geceleri, canlı müzik ve nostalji akşamları. Yaklaşan etkinlikleri inceleyin, yerinizi ayırtın.',
+  alternates: { canonical: '/etkinlikler' },
+};
 
 export default async function EtkinliklerPage() {
   const c = await getSiteContent();
