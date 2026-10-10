@@ -6,7 +6,7 @@ import PublicFooter from '@/components/public-footer';
 import EventsClient from '@/components/events-client';
 import { getSiteContent } from '@/lib/site-content';
 
-export const metadata = { title: 'Etkinlikler — Maksat Muhabbet' };
+export const metadata = { title: 'Etkinlikler | Maksat Muhabbet' };
 
 export default async function EtkinliklerPage() {
   const c = await getSiteContent();
