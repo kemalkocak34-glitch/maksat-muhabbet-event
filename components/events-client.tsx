@@ -14,6 +14,7 @@ interface EventItem {
   date: string;
   price: number;
   priceLabel?: string;
+  linkUrl?: string;
   imageUrl: string | null;
 }
 
@@ -83,10 +84,10 @@ export default function EventsClient({ events }: { events: EventItem[] }) {
                   <h3 className="serif mt-4 text-2xl leading-tight">{ev?.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-[#F5EEE0]/55 line-clamp-2">{ev?.shortDescription}</p>
                   <Link
-                    href={`/etkinlikler/${ev?.slug}`}
+                    href={ev?.linkUrl ?? `/etkinlikler/${ev?.slug}`}
                     className="mt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] hover:text-[#C9A84C] transition"
                   >
-                    {d < now ? 'Etkinliği İncele' : 'Bilet Al / Rezervasyon'} <ArrowRight size={14} className="text-[#C9A84C]" />
+                    {d < now ? 'Etkinliği İncele' : ev?.linkUrl ? 'Rezervasyon' : 'Bilet Al / Rezervasyon'} <ArrowRight size={14} className="text-[#C9A84C]" />
                   </Link>
                 </div>
               </motion.article>

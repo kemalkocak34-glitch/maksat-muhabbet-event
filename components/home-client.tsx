@@ -12,6 +12,8 @@ interface EventCard {
   shortDescription: string;
   date: string;
   price: number;
+  priceLabel?: string;
+  linkUrl?: string;
   imageUrl: string | null;
 }
 
@@ -52,15 +54,15 @@ export default function HomeClient({ events }: { events: EventCard[] }) {
             <div className="p-6 flex flex-col flex-1">
               <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-[#C9A84C]">
                 <span>{dateStr} · {timeStr}</span>
-                <span>₺{(ev?.price ?? 0).toLocaleString('tr-TR')}</span>
+                <span>{ev?.priceLabel ?? `₺${(ev?.price ?? 0).toLocaleString('tr-TR')}`}</span>
               </div>
               <h3 className="serif mt-4 text-2xl lg:text-[28px] leading-tight line-clamp-2 min-h-[60px] lg:min-h-[70px]">{ev?.title}</h3>
               <p className="mt-3 text-sm leading-6 text-[#F5EEE0]/55 line-clamp-2">{ev?.shortDescription}</p>
               <Link
-                href={`/etkinlikler/${ev?.slug}`}
+                href={ev?.linkUrl ?? `/etkinlikler/${ev?.slug}`}
                 className="mt-auto pt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] hover:text-[#C9A84C] transition"
               >
-                Detayı Gör <ArrowRight size={14} className="text-[#C9A84C]" />
+                {ev?.linkUrl ? 'Rezervasyon' : 'Detayı Gör'} <ArrowRight size={14} className="text-[#C9A84C]" />
               </Link>
             </div>
           </motion.article>
