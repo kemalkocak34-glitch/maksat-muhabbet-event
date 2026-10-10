@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 100% 4%;
+    --foreground: 30 30% 93%;
+
+    --card: 0 60% 7%;
+    --card-foreground: 30 30% 93%;
+
+    --popover: 0 60% 7%;
+    --popover-foreground: 30 30% 93%;
+
+    --primary: 350 78% 27%;
+    --primary-foreground: 30 30% 93%;
+
+    --secondary: 0 50% 12%;
+    --secondary-foreground: 30 30% 93%;
+
+    --muted: 0 40% 10%;
+    --muted-foreground: 30 15% 60%;
+
+    --accent: 43 55% 54%;
+    --accent-foreground: 0 100% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 10%;
+
+    --border: 30 30% 93% / 0.12;
+    --input: 30 30% 93% / 0.15;
+    --ring: 43 55% 54%;
+
+    --radius: 0.375rem;
+    --radius-sm: 0.25rem;
+    --radius-lg: 0.5rem;
+    --radius-full: 9999px;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 350ms;
+
+    --chart-1: 350 78% 27%;
+    --chart-2: 43 55% 54%;
+    --chart-3: 30 30% 93%;
+    --chart-4: 0 60% 7%;
+    --chart-5: 0 50% 12%;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.3);
+    color: hsl(var(--accent));
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background-color: transparent; }
+  ::-webkit-scrollbar-thumb { background-color: hsl(var(--muted)); border-radius: 9999px; }
+}
+
+@layer utilities {
+  .serif {
+    font-family: var(--font-serif), 'Cormorant Garamond', 'Georgia', serif;
+  }
+  .photo-zoom {
+    transition: transform 0.7s ease;
+  }
+  .photo-zoom:hover {
+    transform: scale(1.035);
+  }
+}
+
+/* Türkçe tarih seçici (react-day-picker v8) */
+.rdp-maksat {
+  --rdp-cell-size: 36px;
+  --rdp-accent-color: #C9A84C;
+  --rdp-background-color: #7A1020;
+  color: #F5EEE0;
+  font-size: 0.85rem;
+}
+.rdp-maksat .rdp-caption_label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #C9A84C;
+}
+.rdp-maksat .rdp-head_cell {
+  color: #F5EEE0;
+  opacity: 0.5;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.rdp-maksat .rdp-nav_button {
+  color: #C9A84C;
+}
+.rdp-maksat .rdp-nav_button:hover {
+  background: #241112;
+}
+.rdp-maksat .rdp-day {
+  border-radius: 4px;
+  color: #F5EEE0;
+}
+.rdp-maksat .rdp-day:hover:not(.rdp-day_selected):not(.rdp-day_disabled) {
+  background: #241112;
+}
+.rdp-maksat .rdp-day_selected {
+  background: #7A1020 !important;
+  color: #F5EEE0 !important;
+  font-weight: 600;
+}
+.rdp-maksat .rdp-day_today {
+  font-weight: 700;
+  color: #C9A84C;
+}
+.rdp-maksat .rdp-day_disabled {
+  color: #F5EEE0;
+  opacity: 0.2;
+}
+.rdp-maksat .rdp-day_outside {
+  opacity: 0.3;
+}
