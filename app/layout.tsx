@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://maksatmuhabbetevent.com'),
-  title: 'Maksat Muhabbet — Sofranın Etrafında Muhabbet Başlar',
+  title: 'Maksat Muhabbet | Sofranın Etrafında Muhabbet Başlar',
   description: 'Maksat Ocakbaşı\'nın terasında; iyi yemek, özenli müzik ve sahici sohbet. Etkinlikler, özel geceler ve rezervasyon.',
   icons: {
     icon: '/favicon.svg',
