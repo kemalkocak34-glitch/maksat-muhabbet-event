@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import PublicHeader from '@/components/public-header';
 import PublicFooter from '@/components/public-footer';
 import ReservationClient from '@/components/reservation-client';
@@ -8,7 +6,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Rezervasyon | Maksat Muhabbet',
-  description: 'Maksat Ocakbaşı terasında yerinizi ayırtın.',
+  description: 'Maksat Muhabbet’te yerinizi ayırtın. Talebiniz WhatsApp üzerinden bize ulaşır.',
 };
 
 export default async function RezervasyonPage() {

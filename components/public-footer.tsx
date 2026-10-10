@@ -2,6 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Facebook, MapPin, Phone, Mail } from 'lucide-react';
 import { getSiteContent } from '@/lib/site-content';
+import { CONTACT } from '@/content/site';
+import { whatsappUrl } from '@/lib/contact';
+import { WhatsAppIcon } from '@/components/contact-fab';
 
 export default async function PublicFooter() {
   const c = await getSiteContent();
@@ -25,6 +28,7 @@ export default async function PublicFooter() {
             <div className="mt-4 space-y-3 text-sm text-[#F5EEE0]/60">
               <Link href="/etkinlikler" className="block hover:text-[#C9A84C] transition">Etkinlikler</Link>
               <Link href="/galeri" className="block hover:text-[#C9A84C] transition">Galeri</Link>
+              <Link href="/rezervasyon" className="block hover:text-[#C9A84C] transition">Rezervasyon</Link>
             </div>
           </div>
 
@@ -32,7 +36,12 @@ export default async function PublicFooter() {
           <div className="md:col-span-3">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C9A84C]">Bize Ulaşın</p>
             <div className="mt-4 space-y-3 text-sm text-[#F5EEE0]/60">
-              <p className="flex items-start gap-2"><MapPin size={14} className="mt-1 text-[#C9A84C] flex-shrink-0" /> <span>{addressLines.map((line, i) => (<span key={i}>{line}{i < addressLines.length - 1 && <br/>}</span>))}</span></p>
+              {CONTACT.mapsUrl ? (
+                <a href={CONTACT.mapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 hover:text-[#C9A84C] transition"><MapPin size={14} className="mt-1 text-[#C9A84C] flex-shrink-0" /> <span>{addressLines.map((line, i) => (<span key={i}>{line}{i < addressLines.length - 1 && <br/>}</span>))}</span></a>
+              ) : (
+                <p className="flex items-start gap-2"><MapPin size={14} className="mt-1 text-[#C9A84C] flex-shrink-0" /> <span>{addressLines.map((line, i) => (<span key={i}>{line}{i < addressLines.length - 1 && <br/>}</span>))}</span></p>
+              )}
+              <a href={whatsappUrl('Merhaba, Maksat Muhabbet hakkında bilgi almak istiyorum.')} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#C9A84C] transition"><WhatsAppIcon size={14} className="text-[#C9A84C] flex-shrink-0" /> <span>WhatsApp’tan yazın</span></a>
               <a href={`tel:${c.footer_phone.replace(/[^+\d]/g, '')}`} className="flex items-center gap-2 hover:text-[#C9A84C] transition"><Phone size={14} className="text-[#C9A84C] flex-shrink-0" /> <span suppressHydrationWarning>{c.footer_phone}</span></a>
               <a href={`mailto:${c.footer_email}`} className="flex items-center gap-2 hover:text-[#C9A84C] transition"><Mail size={14} className="text-[#C9A84C] flex-shrink-0" /> <span suppressHydrationWarning>{c.footer_email}</span></a>
             </div>

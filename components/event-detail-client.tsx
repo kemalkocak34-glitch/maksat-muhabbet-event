@@ -1,140 +1,111 @@
 "use client";
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { CheckCircle, Loader2 } from 'lucide-react';
+import Link from 'next/link';
+import { whatsappUrl, track } from '@/lib/contact';
+import { WhatsAppIcon } from '@/components/contact-fab';
+import WhatsAppSent from '@/components/whatsapp-sent';
 
-export default function EventDetailClient({ eventId, spotsLeft }: { eventId: string; spotsLeft: number }) {
-  const [form, setForm] = useState({
-    fullName: '',
-    phone: '',
-    email: '',
-    guestCount: 1,
-    specialRequest: '',
-  });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+const inputClass =
+  'w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#C9A84C] focus:outline-none transition';
+const labelClass = 'block text-xs font-semibold uppercase tracking-wider text-[#F5EEE0]/70 mb-1.5';
 
-  const handleSubmit = async (e: React.FormEvent) => {
+interface Props {
+  eventTitle: string;
+  eventDate: string;
+  closed: boolean;
+  closedReason: 'past' | 'soldOut';
+}
+
+export default function EventDetailClient({ eventTitle, eventDate, closed, closedReason }: Props) {
+  const [form, setForm] = useState({ fullName: '', guestCount: 2, note: '' });
+  const [sentUrl, setSentUrl] = useState<string | null>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
-    try {
-      const res = await fetch('/api/reservations', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, eventId }),
-      });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data?.error ?? 'Bir hata oluştu.');
-      }
-      setSuccess(true);
-    } catch (err: any) {
-      setError(err?.message ?? 'Beklenmeyen bir hata oluştu.');
-    } finally {
-      setLoading(false);
-    }
+    const lines = [
+      `Merhaba, "${eventTitle}" etkinliği için rezervasyon yapmak istiyorum.`,
+      `Tarih: ${eventDate}`,
+      `Ad Soyad: ${form.fullName.trim()}`,
+      `Kişi sayısı: ${form.guestCount}`,
+    ];
+    if (form.note.trim()) lines.push(`Not: ${form.note.trim()}`);
+    const url = whatsappUrl(lines.join('\n'));
+    track('reservation_submit', { type: 'event', event_title: eventTitle, guests: form.guestCount });
+    // Açılır pencere engellenirse aynı sekmede aç
+    const win = window.open(url, '_blank');
+    if (win) win.opener = null;
+    else window.location.href = url;
+    setSentUrl(url);
   };
 
-  if (success) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="text-center py-8"
-      >
-        <CheckCircle size={48} className="mx-auto text-green-500 mb-4" />
-        <h3 className="serif text-xl font-semibold mb-2">Rezervasyonunuz Alındı!</h3>
-        <p className="text-sm text-[#F5EEE0]/60">
-          En kısa sürede sizinle iletişime geçeceğiz.
-        </p>
-      </motion.div>
-    );
-  }
-
-  if (spotsLeft <= 0) {
+  if (closed) {
     return (
       <div className="text-center py-8">
-        <p className="text-lg font-semibold text-[#C9A84C]">Bu etkinlik dolmuştur.</p>
-        <p className="text-sm text-[#F5EEE0]/50 mt-2">Diğer etkinliklere göz atın!</p>
+        <p className="text-lg font-semibold text-[#C9A84C]">
+          {closedReason === 'past' ? 'Bu etkinlik sona erdi.' : 'Bu etkinlik dolmuştur.'}
+        </p>
+        <Link href="/etkinlikler" className="mt-3 inline-block text-sm text-[#F5EEE0]/60 underline hover:text-[#C9A84C] transition">
+          Diğer etkinliklere göz atın
+        </Link>
       </div>
     );
   }
 
+  if (sentUrl) return <WhatsAppSent url={sentUrl} onEdit={() => setSentUrl(null)} />;
+
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      {error && <p className="text-sm text-red-400 bg-red-900/20 p-3">{error}</p>}
-
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-[#F5EEE0]/70 mb-1.5">Ad Soyad *</label>
+        <label htmlFor="ev-name" className={labelClass}>Ad Soyad *</label>
         <input
+          id="ev-name"
           type="text"
           required
+          autoComplete="name"
           value={form.fullName}
           onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-          className="w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#C9A84C] focus:outline-none transition"
+          className={inputClass}
           placeholder="Adınız ve soyadınız"
         />
       </div>
 
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-[#F5EEE0]/70 mb-1.5">Telefon *</label>
+        <label htmlFor="ev-guests" className={labelClass}>Kişi Sayısı *</label>
         <input
-          type="tel"
-          required
-          value={form.phone}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-          className="w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#C9A84C] focus:outline-none transition"
-          placeholder="05XX XXX XX XX"
-        />
-      </div>
-
-      <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-[#F5EEE0]/70 mb-1.5">E-posta *</label>
-        <input
-          type="email"
-          required
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          className="w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#C9A84C] focus:outline-none transition"
-          placeholder="ornek@email.com"
-        />
-      </div>
-
-      <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-[#F5EEE0]/70 mb-1.5">Kişi Sayısı *</label>
-        <input
+          id="ev-guests"
           type="number"
           min={1}
-          max={spotsLeft}
+          max={50}
           required
           value={form.guestCount}
           onChange={(e) => setForm({ ...form, guestCount: parseInt(e.target.value) || 1 })}
-          className="w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] focus:border-[#C9A84C] focus:outline-none transition"
+          className={inputClass}
         />
       </div>
 
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-[#F5EEE0]/70 mb-1.5">Mesaj</label>
+        <label htmlFor="ev-note" className={labelClass}>Mesaj</label>
         <textarea
-          value={form.specialRequest}
-          onChange={(e) => setForm({ ...form, specialRequest: e.target.value })}
+          id="ev-note"
+          value={form.note}
+          onChange={(e) => setForm({ ...form, note: e.target.value })}
           rows={3}
-          className="w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#C9A84C] focus:outline-none transition resize-none"
+          className={`${inputClass} resize-none`}
           placeholder="Varsa belirtmek istediğiniz bir şey..."
         />
       </div>
 
       <button
         type="submit"
-        disabled={loading}
-        className="w-full bg-[#7A1020] py-3.5 text-sm font-semibold uppercase tracking-wider hover:bg-[#93162A] transition disabled:opacity-60 flex items-center justify-center gap-2"
+        className="w-full bg-[#7A1020] py-3.5 text-sm font-semibold uppercase tracking-wider hover:bg-[#93162A] transition flex items-center justify-center gap-2"
       >
-        {loading && <Loader2 size={16} className="animate-spin" />}
-        Rezervasyonu Tamamla
+        <WhatsAppIcon size={18} />
+        WhatsApp ile Rezervasyon
       </button>
+      <p className="text-center text-xs text-[#F5EEE0]/40">
+        Talebiniz WhatsApp üzerinden iletilir; yeriniz onay mesajıyla kesinleşir.
+      </p>
     </form>
   );
 }

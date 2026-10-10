@@ -1,6 +1,6 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
-import { prisma } from '@/lib/prisma';
+import { getActiveEvents } from '@/lib/data';
 import PublicHeader from '@/components/public-header';
 import PublicFooter from '@/components/public-footer';
 import EventsClient from '@/components/events-client';
@@ -10,10 +10,7 @@ export const metadata = { title: 'Etkinlikler — Maksat Muhabbet' };
 
 export default async function EtkinliklerPage() {
   const c = await getSiteContent();
-  const allEvents = await prisma.event.findMany({
-    where: { isActive: true },
-    orderBy: { date: 'asc' },
-  });
+  const allEvents = await getActiveEvents();
 
   return (
     <>
@@ -24,7 +21,7 @@ export default async function EtkinliklerPage() {
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C9A84C]">{c.events_label}</p>
             <h1 className="serif text-4xl lg:text-[56px] font-semibold">{c.events_title}</h1>
           </div>
-          <EventsClient events={JSON.parse(JSON.stringify(allEvents ?? []))} />
+          <EventsClient events={allEvents} />
         </section>
       </main>
       <PublicFooter />

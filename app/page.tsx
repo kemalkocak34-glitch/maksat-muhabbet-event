@@ -1,8 +1,9 @@
-export const dynamic = "force-dynamic";
+// Saatte bir yeniden üretilir; tarihi geçen etkinlik ana sayfadan kendiliğinden düşer.
+export const revalidate = 3600;
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { prisma } from '@/lib/prisma';
+import { getUpcomingEvents, getGalleryPhotos } from '@/lib/data';
 import PublicHeader from '@/components/public-header';
 import PublicFooter from '@/components/public-footer';
 import HomeClient from '@/components/home-client';
@@ -11,16 +12,8 @@ import { ArrowRight } from 'lucide-react';
 
 export default async function HomePage() {
   const c = await getSiteContent();
-  const events = await prisma.event.findMany({
-    where: { isActive: true, date: { gte: new Date() } },
-    orderBy: { date: 'asc' },
-    take: 3,
-  });
-
-  const gallery = await prisma.galleryPhoto.findMany({
-    orderBy: { order: 'asc' },
-    take: 4,
-  });
+  const events = await getUpcomingEvents(3);
+  const gallery = await getGalleryPhotos(4);
 
   return (
     <>
@@ -38,11 +31,13 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#130909]/80 via-[#130909]/40 to-[#130909]" />
 
         <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pb-20 text-center pt-28">
-          <div className="mb-6 flex items-center gap-4 text-[#C9A84C]">
-            <span className="h-px w-12 bg-[#C9A84C]" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.3em]">{c.hero_label}</span>
-            <span className="h-px w-12 bg-[#C9A84C]" />
-          </div>
+          {c.hero_label && (
+            <div className="mb-6 flex items-center gap-4 text-[#C9A84C]">
+              <span className="h-px w-12 bg-[#C9A84C]" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.3em]">{c.hero_label}</span>
+              <span className="h-px w-12 bg-[#C9A84C]" />
+            </div>
+          )}
           <h1 className="serif max-w-[900px] text-5xl sm:text-6xl lg:text-[78px] leading-[0.98] font-semibold tracking-tight">
             {c.hero_title_1}<br />
             <span className="italic text-[#E7D4B4]">{c.hero_title_2}</span>
@@ -58,7 +53,7 @@ export default async function HomePage() {
               {c.hero_cta1}
             </Link>
             <Link
-              href="/etkinlikler"
+              href="/rezervasyon"
               className="border border-[#F5EEE0]/40 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-[#F5EEE0] hover:text-[#130909] transition"
             >
               {c.hero_cta2}
@@ -84,7 +79,7 @@ export default async function HomePage() {
               </Link>
             </div>
 
-            <HomeClient events={JSON.parse(JSON.stringify(events ?? []))} />
+            <HomeClient events={events} />
           </div>
         </section>
 
@@ -100,7 +95,7 @@ export default async function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 px-4">
-            {(gallery ?? []).map((photo: any) => (
+            {gallery.map((photo) => (
               <div key={photo?.id} className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={photo?.imageUrl ?? '/venue/mekan-ayna.jpg'}

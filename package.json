@@ -3,33 +3,22 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
-    "postinstall": "prisma generate"
-  },
-  "prisma": {
-    "seed": "tsx --require dotenv/config scripts/safe-seed.ts"
+    "lint": "eslint ."
   },
   "devDependencies": {
-    "@types/bcryptjs": "2.4.6",
-    "@types/jsonwebtoken": "9.0.7",
     "@types/node": "22.0.0",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "eslint": "9.33.0",
     "eslint-config-next": "16.3.3",
     "postcss": "8.4.47",
-    "prisma": "6.7.0",
     "tailwindcss": "3.4.0",
     "tailwindcss-animate": "1.0.7",
-    "tsx": "4.20.3",
     "typescript": "5.6.3"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1105.0",
-    "@aws-sdk/s3-request-presigner": "3.1105.0",
-    "@prisma/client": "6.7.0",
     "@radix-ui/react-accordion": "1.2.0",
     "@radix-ui/react-alert-dialog": "1.1.1",
     "@radix-ui/react-aspect-ratio": "1.1.0",
@@ -58,16 +47,13 @@
     "@radix-ui/react-toggle-group": "1.1.0",
     "@radix-ui/react-tooltip": "1.1.2",
     "autoprefixer": "10.4.20",
-    "bcryptjs": "2.4.3",
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.1",
     "cmdk": "1.0.0",
     "date-fns": "4.0.0",
-    "dotenv": "16.5.0",
     "embla-carousel-react": "8.3.0",
     "framer-motion": "12.23.12",
     "input-otp": "1.2.4",
-    "jsonwebtoken": "9.0.2",
     "lucide-react": "0.446.0",
     "next": "16.3.3",
     "next-themes": "0.4.0",
@@ -80,6 +66,11 @@
     "tailwind-merge": "2.5.2",
     "vaul": "1.0.0"
   },
-  "engines": { "node": ">=20.9.0" },
-  "overrides": { "motion-dom": "12.23.12", "motion-utils": "12.23.6" }
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "overrides": {
+    "motion-dom": "12.23.12",
+    "motion-utils": "12.23.6"
+  }
 }

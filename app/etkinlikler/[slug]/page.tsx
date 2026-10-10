@@ -1,6 +1,7 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
-import { prisma } from '@/lib/prisma';
+import type { Metadata } from 'next';
+import { getActiveEvents, getEventBySlug } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import PublicHeader from '@/components/public-header';
 import PublicFooter from '@/components/public-footer';
@@ -9,16 +10,35 @@ import Image from 'next/image';
 import { Calendar, Clock, Users, Utensils } from 'lucide-react';
 import { getSiteContent } from '@/lib/site-content';
 
-export default async function EventDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateStaticParams() {
+  return (await getActiveEvents()).map((e) => ({ slug: e.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const event = await getEventBySlug(decodeURIComponent(slug));
+  if (!event) return { title: 'Etkinlik bulunamadı — Maksat Muhabbet' };
+  return {
+    title: `${event.title} — Maksat Muhabbet`,
+    description: event.shortDescription,
+    openGraph: {
+      title: event.title,
+      description: event.shortDescription,
+      images: [event.imageUrl ?? '/og-image.png'],
+    },
+  };
+}
+
+export default async function EventDetailPage({ params }: Props) {
   const { slug } = await params;
   const c = await getSiteContent();
-  const event = await prisma.event.findUnique({ where: { slug } });
+  const event = await getEventBySlug(decodeURIComponent(slug));
   if (!event) notFound();
 
-  const reservationCount = await prisma.reservation.count({
-    where: { eventId: event.id, status: { not: 'CANCELLED' } },
-  });
-  const spotsLeft = Math.max(0, event.capacity - reservationCount);
+  const isPast = new Date(event.date).getTime() < Date.now();
+  const closed = isPast || event.soldOut === true;
 
   const d = new Date(event.date);
   const dateStr = d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Istanbul' });
@@ -55,7 +75,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
               <div className="flex flex-wrap gap-6 text-sm text-[#F5EEE0]/70">
                 <span className="flex items-center gap-2"><Calendar size={16} className="text-[#C9A84C]" /> {dateStr}</span>
                 <span className="flex items-center gap-2"><Clock size={16} className="text-[#C9A84C]" /> {timeStr}</span>
-                <span className="flex items-center gap-2"><Users size={16} className="text-[#C9A84C]" /> {spotsLeft > 0 ? `${spotsLeft} kişi kaldı` : 'Doldu!'}</span>
+                <span className="flex items-center gap-2"><Users size={16} className="text-[#C9A84C]" /> {isPast ? 'Etkinlik sona erdi' : event.soldOut ? 'Doldu!' : 'Sınırlı kontenjan'}</span>
               </div>
 
               {/* Açıklama */}
@@ -83,7 +103,12 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
             <div className="lg:col-span-5">
               <div className="sticky top-28 bg-[#1A0A0A] border border-[#F5EEE0]/10 p-6 lg:p-8">
                 <h2 className="serif text-2xl font-semibold mb-6">{c.event_reserve_heading}</h2>
-                <EventDetailClient eventId={event.id} spotsLeft={spotsLeft} />
+                <EventDetailClient
+                  eventTitle={event.title}
+                  eventDate={`${dateStr}, ${timeStr}`}
+                  closed={closed}
+                  closedReason={isPast ? 'past' : 'soldOut'}
+                />
               </div>
             </div>
           </div>

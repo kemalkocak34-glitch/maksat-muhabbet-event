@@ -2,8 +2,8 @@ import { Cormorant_Garamond, Montserrat, JetBrains_Mono } from 'next/font/google
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 import { ChunkLoadErrorHandler } from '@/components/chunk-load-error-handler';
-
-export const dynamic = "force-dynamic";
+import ContactFab from '@/components/contact-fab';
+import Gtm from '@/components/gtm';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'latin-ext'],
@@ -41,7 +41,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${cormorant.variable} ${montserrat.variable} ${jetbrainsMono.variable} font-sans bg-[#130909] text-[#F5EEE0] antialiased`}
       >
+        <Gtm />
         {children}
+        <ContactFab />
         <Toaster />
         <ChunkLoadErrorHandler />
       </body>
