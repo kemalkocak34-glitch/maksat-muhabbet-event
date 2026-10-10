@@ -9,7 +9,7 @@ export const CONTACT = {
   instagram: 'https://www.instagram.com/maksatmuhabbetevent',
   facebook: '',
   // Her satır footer'da ayrı gösterilir
-  addressLines: ['Beyoğlu - İstanbul'],
+  addressLines: ['Hüseyinağa, Sahne Sk. No:23', '34435 Beyoğlu / İstanbul'],
   // Google Haritalar bağlantısı; boşsa adres tıklanabilir olmaz
-  mapsUrl: '',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Maksat%20Ocakba%C5%9F%C4%B1%20%26%20Meyhane&query_place_id=ChIJU7K5xA23yhQRf3ZJF7NCclA',
 };
