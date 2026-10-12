@@ -32,9 +32,9 @@ export const EVENTS: SiteEvent[] = [
     shortDescription: 'Canlı müzik, anason eşliğinde geleneksel lezzetler ve Anadolu’nun köklü sofra kültürü.',
     date: '2026-10-16T18:30:00+03:00',
     endTime: '23:45',
-    price: 4100,
-    priceLabel: '₺4.100 / ₺4.300',
-    priceDetail: 'Havale & EFT: 4.100 ₺ | Kredi Kartı: 4.300 ₺',
+    price: 3800,
+    priceLabel: '₺3.800 / ₺3.900',
+    priceDetail: 'Havale & EFT: 3.800 ₺ | Kredi Kartı: 3.900 ₺',
     capacity: 0,
     includedHeading: 'Gecenin Menüsü & Eşlikçileri',
     whatsIncluded:
