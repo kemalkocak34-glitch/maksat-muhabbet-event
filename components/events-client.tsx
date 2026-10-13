@@ -33,8 +33,8 @@ export default function EventsClient({ events }: { events: EventItem[] }) {
           onClick={() => setFilter('upcoming')}
           className={`px-5 py-2 text-xs font-semibold uppercase tracking-wider transition ${
             filter === 'upcoming'
-              ? 'bg-[#7A1020] text-[#F5EEE0]'
-              : 'border border-[#F5EEE0]/20 text-[#F5EEE0]/60 hover:border-[#C9A84C]'
+              ? 'bg-[#5C2629] text-[#F5EEE0]'
+              : 'border border-[#F5EEE0]/20 text-[#F5EEE0]/60 hover:border-[#F0D592]'
           }`}
         >
           Yaklaşanlar
@@ -43,8 +43,8 @@ export default function EventsClient({ events }: { events: EventItem[] }) {
           onClick={() => setFilter('past')}
           className={`px-5 py-2 text-xs font-semibold uppercase tracking-wider transition ${
             filter === 'past'
-              ? 'bg-[#7A1020] text-[#F5EEE0]'
-              : 'border border-[#F5EEE0]/20 text-[#F5EEE0]/60 hover:border-[#C9A84C]'
+              ? 'bg-[#5C2629] text-[#F5EEE0]'
+              : 'border border-[#F5EEE0]/20 text-[#F5EEE0]/60 hover:border-[#F0D592]'
           }`}
         >
           Geçmiş Etkinlikler
@@ -66,7 +66,7 @@ export default function EventsClient({ events }: { events: EventItem[] }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.45 }}
-                className="group bg-[#241112] border border-[#F5EEE0]/8 overflow-hidden"
+                className="group bg-[#A26467] border border-[#F5EEE0]/8 overflow-hidden"
               >
                 <div className="relative h-[260px] overflow-hidden">
                   <Image
@@ -77,7 +77,7 @@ export default function EventsClient({ events }: { events: EventItem[] }) {
                   />
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-[#C9A84C]">
+                  <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-[#F0D592]">
                     <span>{dateStr} · {timeStr}</span>
                     <span>{ev?.priceLabel ?? `₺${(ev?.price ?? 0).toLocaleString('tr-TR')}`}</span>
                   </div>
@@ -85,9 +85,9 @@ export default function EventsClient({ events }: { events: EventItem[] }) {
                   <p className="mt-3 text-sm leading-6 text-[#F5EEE0]/55 line-clamp-2">{ev?.shortDescription}</p>
                   <Link
                     href={ev?.linkUrl ?? `/etkinlikler/${ev?.slug}`}
-                    className="mt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] hover:text-[#C9A84C] transition"
+                    className="mt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] hover:text-[#F0D592] transition"
                   >
-                    {d < now ? 'Etkinliği İncele' : ev?.linkUrl ? 'Rezervasyon' : 'Bilet Al / Rezervasyon'} <ArrowRight size={14} className="text-[#C9A84C]" />
+                    {d < now ? 'Etkinliği İncele' : ev?.linkUrl ? 'Rezervasyon' : 'Bilet Al / Rezervasyon'} <ArrowRight size={14} className="text-[#F0D592]" />
                   </Link>
                 </div>
               </motion.article>

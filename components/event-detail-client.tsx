@@ -7,7 +7,7 @@ import { WhatsAppIcon } from '@/components/contact-fab';
 import WhatsAppSent from '@/components/whatsapp-sent';
 
 const inputClass =
-  'w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#C9A84C] focus:outline-none transition';
+  'w-full bg-[#94585A] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#F0D592] focus:outline-none transition';
 const labelClass = 'block text-xs font-semibold uppercase tracking-wider text-[#F5EEE0]/70 mb-1.5';
 
 interface Props {
@@ -42,10 +42,10 @@ export default function EventDetailClient({ eventTitle, eventDate, closed, close
   if (closed) {
     return (
       <div className="text-center py-8">
-        <p className="text-lg font-semibold text-[#C9A84C]">
+        <p className="text-lg font-semibold text-[#F0D592]">
           {closedReason === 'past' ? 'Bu etkinlik sona erdi.' : 'Bu etkinlik dolmuştur.'}
         </p>
-        <Link href="/etkinlikler" className="mt-3 inline-block text-sm text-[#F5EEE0]/60 underline hover:text-[#C9A84C] transition">
+        <Link href="/etkinlikler" className="mt-3 inline-block text-sm text-[#F5EEE0]/60 underline hover:text-[#F0D592] transition">
           Diğer etkinliklere göz atın
         </Link>
       </div>
@@ -98,7 +98,7 @@ export default function EventDetailClient({ eventTitle, eventDate, closed, close
 
       <button
         type="submit"
-        className="w-full bg-[#7A1020] py-3.5 text-sm font-semibold uppercase tracking-wider hover:bg-[#93162A] transition flex items-center justify-center gap-2"
+        className="w-full bg-[#5C2629] py-3.5 text-sm font-semibold uppercase tracking-wider hover:bg-[#6E3134] transition flex items-center justify-center gap-2"
       >
         <WhatsAppIcon size={18} />
         WhatsApp ile Rezervasyon

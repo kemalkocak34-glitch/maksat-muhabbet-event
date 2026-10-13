@@ -41,7 +41,7 @@ export default function HomeClient({ events }: { events: EventCard[] }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.12, duration: 0.5 }}
-            className="group bg-[#241112] border border-[#F5EEE0]/8 overflow-hidden flex flex-col h-full"
+            className="group bg-[#A26467] border border-[#F5EEE0]/8 overflow-hidden flex flex-col h-full"
           >
             <div className="relative h-[260px] lg:h-[300px] overflow-hidden">
               <Image
@@ -52,7 +52,7 @@ export default function HomeClient({ events }: { events: EventCard[] }) {
               />
             </div>
             <div className="p-6 flex flex-col flex-1">
-              <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-[#C9A84C]">
+              <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.14em] text-[#F0D592]">
                 <span>{dateStr} · {timeStr}</span>
                 <span>{ev?.priceLabel ?? `₺${(ev?.price ?? 0).toLocaleString('tr-TR')}`}</span>
               </div>
@@ -60,9 +60,9 @@ export default function HomeClient({ events }: { events: EventCard[] }) {
               <p className="mt-3 text-sm leading-6 text-[#F5EEE0]/55 line-clamp-2">{ev?.shortDescription}</p>
               <Link
                 href={ev?.linkUrl ?? `/etkinlikler/${ev?.slug}`}
-                className="mt-auto pt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] hover:text-[#C9A84C] transition"
+                className="mt-auto pt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] hover:text-[#F0D592] transition"
               >
-                {ev?.linkUrl ? 'Rezervasyon' : 'Detayı Gör'} <ArrowRight size={14} className="text-[#C9A84C]" />
+                {ev?.linkUrl ? 'Rezervasyon' : 'Detayı Gör'} <ArrowRight size={14} className="text-[#F0D592]" />
               </Link>
             </div>
           </motion.article>

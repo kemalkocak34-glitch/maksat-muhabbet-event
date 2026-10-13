@@ -41,7 +41,7 @@ export default function EventGallery({ images, title }: { images: string[]; titl
             type="button"
             onClick={() => setOpen(i)}
             aria-label={`${title} fotoğraf ${i + 1}`}
-            className="group relative aspect-[4/5] overflow-hidden border border-[#F5EEE0]/8 bg-[#241112] focus:outline-none focus-visible:border-[#C9A84C]"
+            className="group relative aspect-[4/5] overflow-hidden border border-[#F5EEE0]/8 bg-[#A26467] focus:outline-none focus-visible:border-[#F0D592]"
           >
             <Image
               src={src}
@@ -60,13 +60,13 @@ export default function EventGallery({ images, title }: { images: string[]; titl
           aria-modal="true"
           aria-label="Etkinlikten Kareler"
           onClick={close}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0B0505]/95 p-4 sm:p-10"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#6E3A3C]/95 p-4 sm:p-10"
         >
           <button
             type="button"
             onClick={close}
             aria-label="Kapat"
-            className="absolute right-4 top-4 p-2 text-[#F5EEE0]/70 hover:text-[#C9A84C] transition"
+            className="absolute right-4 top-4 p-2 text-[#F5EEE0]/70 hover:text-[#F0D592] transition"
           >
             <X size={28} />
           </button>
@@ -76,7 +76,7 @@ export default function EventGallery({ images, title }: { images: string[]; titl
                 type="button"
                 onClick={(e) => { e.stopPropagation(); step(-1); }}
                 aria-label="Önceki fotoğraf"
-                className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-2 text-[#F5EEE0]/70 hover:text-[#C9A84C] transition"
+                className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-2 text-[#F5EEE0]/70 hover:text-[#F0D592] transition"
               >
                 <ChevronLeft size={36} />
               </button>
@@ -84,7 +84,7 @@ export default function EventGallery({ images, title }: { images: string[]; titl
                 type="button"
                 onClick={(e) => { e.stopPropagation(); step(1); }}
                 aria-label="Sonraki fotoğraf"
-                className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-2 text-[#F5EEE0]/70 hover:text-[#C9A84C] transition"
+                className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-2 text-[#F5EEE0]/70 hover:text-[#F0D592] transition"
               >
                 <ChevronRight size={36} />
               </button>

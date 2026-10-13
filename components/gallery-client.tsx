@@ -55,7 +55,7 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
             onClick={() => setSelected(null)}
           >
             <button
-              className="absolute top-6 right-6 text-white hover:text-[#C9A84C] transition"
+              className="absolute top-6 right-6 text-white hover:text-[#F0D592] transition"
               onClick={() => setSelected(null)}
             >
               <X size={28} />

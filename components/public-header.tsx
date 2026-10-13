@@ -17,7 +17,7 @@ export default function PublicHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#F5EEE0]/10 bg-[#130909]/80 backdrop-blur-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#F5EEE0]/10 bg-[#94585A]/80 backdrop-blur-md">
       <div className="mx-auto flex h-28 max-w-[1200px] items-center justify-between px-6 lg:px-10">
         <Link href="/" className="flex-shrink-0">
           <Image src="/venue/logo-v2.png" alt="Maksat Muhabbet" width={237} height={95} className="h-[95px] w-auto object-contain" />
@@ -26,7 +26,7 @@ export default function PublicHeader() {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8 text-[11px] font-semibold tracking-[0.16em] uppercase">
           {navLinks.map((l) => (
-            <Link key={l.href} href={l.href} className="text-[#F5EEE0]/70 hover:text-[#C9A84C] transition">
+            <Link key={l.href} href={l.href} className="text-[#F5EEE0]/70 hover:text-[#F0D592] transition">
               {l.label}
             </Link>
           ))}
@@ -34,7 +34,7 @@ export default function PublicHeader() {
 
         <Link
           href="/rezervasyon"
-          className="hidden md:inline-block border border-[#C9A84C] px-5 py-2.5 text-[11px] font-semibold tracking-[0.12em] uppercase text-[#F5EEE0] hover:bg-[#C9A84C] hover:text-[#130909] transition"
+          className="hidden md:inline-block border border-[#F0D592] px-5 py-2.5 text-[11px] font-semibold tracking-[0.12em] uppercase text-[#F5EEE0] hover:bg-[#F0D592] hover:text-[#94585A] transition"
         >
           Rezervasyon
         </Link>
@@ -52,7 +52,7 @@ export default function PublicHeader() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#130909]/95 backdrop-blur-md border-t border-[#F5EEE0]/10"
+            className="md:hidden bg-[#94585A]/95 backdrop-blur-md border-t border-[#F5EEE0]/10"
           >
             <div className="flex flex-col items-center gap-5 py-6">
               {navLinks.map((l) => (
@@ -60,7 +60,7 @@ export default function PublicHeader() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-sm font-semibold uppercase tracking-widest text-[#F5EEE0]/70 hover:text-[#C9A84C]"
+                  className="text-sm font-semibold uppercase tracking-widest text-[#F5EEE0]/70 hover:text-[#F0D592]"
                 >
                   {l.label}
                 </Link>
@@ -68,7 +68,7 @@ export default function PublicHeader() {
               <Link
                 href="/rezervasyon"
                 onClick={() => setMobileOpen(false)}
-                className="border border-[#C9A84C] px-6 py-2 text-xs font-semibold uppercase tracking-wider"
+                className="border border-[#F0D592] px-6 py-2 text-xs font-semibold uppercase tracking-wider"
               >
                 Rezervasyon
               </Link>

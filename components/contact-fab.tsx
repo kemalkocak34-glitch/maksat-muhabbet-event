@@ -20,7 +20,7 @@ export default function ContactFab() {
         href={`tel:${CONTACT.phoneTel}`}
         onClick={() => track('phone_click', { location: 'fab' })}
         aria-label={`Bizi arayın: ${CONTACT.phoneDisplay}`}
-        className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C9A84C]/60 bg-[#130909]/90 text-[#C9A84C] shadow-lg backdrop-blur transition hover:bg-[#C9A84C] hover:text-[#130909]"
+        className="flex h-12 w-12 items-center justify-center rounded-full border border-[#F0D592]/60 bg-[#94585A]/90 text-[#F0D592] shadow-lg backdrop-blur transition hover:bg-[#F0D592] hover:text-[#94585A]"
       >
         <Phone size={20} />
       </a>

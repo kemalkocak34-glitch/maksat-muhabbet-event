@@ -65,7 +65,7 @@ export default function ReservationClient() {
           required
           value={form.fullName}
           onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-          className="w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#C9A84C] focus:outline-none transition"
+          className="w-full bg-[#94585A] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#F0D592] focus:outline-none transition"
           placeholder="Adınız ve soyadınız"
         />
       </div>
@@ -76,14 +76,14 @@ export default function ReservationClient() {
           <button
             type="button"
             onClick={() => setCalendarOpen(!calendarOpen)}
-            className="w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-left flex items-center justify-between focus:border-[#C9A84C] focus:outline-none transition"
+            className="w-full bg-[#94585A] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-left flex items-center justify-between focus:border-[#F0D592] focus:outline-none transition"
           >
             <span className={form.reservationDate ? 'text-[#F5EEE0]' : 'text-[#F5EEE0]/30'}>
               {form.reservationDate
                 ? format(new Date(form.reservationDate + 'T12:00:00'), 'd MMMM yyyy', { locale: tr })
                 : 'Tarih seçiniz'}
             </span>
-            <CalendarDays size={16} className="text-[#C9A84C]" />
+            <CalendarDays size={16} className="text-[#F0D592]" />
           </button>
           {/* Hidden native input for form validation */}
           <input
@@ -100,7 +100,7 @@ export default function ReservationClient() {
             }}
           />
           {calendarOpen && (
-            <div className="absolute z-50 mt-1 left-0 bg-[#1A0A0A] border border-[#F5EEE0]/15 rounded-lg shadow-2xl p-3">
+            <div className="absolute z-50 mt-1 left-0 bg-[#8A4D50] border border-[#F5EEE0]/15 rounded-lg shadow-2xl p-3">
               <DayPicker
                 mode="single"
                 locale={tr}
@@ -130,7 +130,7 @@ export default function ReservationClient() {
             required
             value={form.guestCount}
             onChange={(e) => setForm({ ...form, guestCount: parseInt(e.target.value) || 1 })}
-            className="w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] focus:border-[#C9A84C] focus:outline-none transition"
+            className="w-full bg-[#94585A] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] focus:border-[#F0D592] focus:outline-none transition"
           />
         </div>
       </div>
@@ -141,14 +141,14 @@ export default function ReservationClient() {
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           rows={4}
-          className="w-full bg-[#130909] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#C9A84C] focus:outline-none transition resize-none"
+          className="w-full bg-[#94585A] border border-[#F5EEE0]/15 px-4 py-3 text-sm text-[#F5EEE0] placeholder:text-[#F5EEE0]/30 focus:border-[#F0D592] focus:outline-none transition resize-none"
           placeholder="Varsa belirtmek istediğiniz bir şey..."
         />
       </div>
 
       <button
         type="submit"
-        className="w-full bg-[#7A1020] py-3.5 text-sm font-semibold uppercase tracking-wider hover:bg-[#93162A] transition flex items-center justify-center gap-2"
+        className="w-full bg-[#5C2629] py-3.5 text-sm font-semibold uppercase tracking-wider hover:bg-[#6E3134] transition flex items-center justify-center gap-2"
       >
         <WhatsAppIcon size={18} />
         WhatsApp ile Rezervasyon

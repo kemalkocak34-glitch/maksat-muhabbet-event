@@ -20,7 +20,7 @@ export default function WhatsAppSent({ url, onEdit }: { url: string; onEdit: () 
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => track('whatsapp_click', { location: 'form_retry' })}
-        className="mt-6 inline-flex items-center justify-center gap-2 bg-[#7A1020] px-6 py-3 text-xs font-semibold uppercase tracking-wider hover:bg-[#93162A] transition"
+        className="mt-6 inline-flex items-center justify-center gap-2 bg-[#5C2629] px-6 py-3 text-xs font-semibold uppercase tracking-wider hover:bg-[#6E3134] transition"
       >
         WhatsApp açılmadıysa tıklayın
       </a>
@@ -29,12 +29,12 @@ export default function WhatsAppSent({ url, onEdit }: { url: string; onEdit: () 
         <a
           href={`tel:${CONTACT.phoneTel}`}
           onClick={() => track('phone_click', { location: 'form_sent' })}
-          className="text-[#C9A84C] hover:underline"
+          className="text-[#F0D592] hover:underline"
         >
           {CONTACT.phoneDisplay}
         </a>
       </p>
-      <button type="button" onClick={onEdit} className="mt-4 text-xs uppercase tracking-wider text-[#F5EEE0]/40 hover:text-[#C9A84C] transition">
+      <button type="button" onClick={onEdit} className="mt-4 text-xs uppercase tracking-wider text-[#F5EEE0]/40 hover:text-[#F0D592] transition">
         Bilgileri düzenle
       </button>
     </motion.div>
