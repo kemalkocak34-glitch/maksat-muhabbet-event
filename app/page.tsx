@@ -28,7 +28,7 @@ export default async function HomePage() {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#94585A]/80 via-[#94585A]/40 to-[#94585A]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#28141A]/55 via-[#28141A]/35 to-[#94585A]/85" />
 
         <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pb-20 text-center pt-28">
           {c.hero_label && (
@@ -38,11 +38,11 @@ export default async function HomePage() {
               <span className="h-px w-12 bg-[#F0D592]" />
             </div>
           )}
-          <h1 className="serif max-w-[900px] text-5xl sm:text-6xl lg:text-[78px] leading-[0.98] font-semibold tracking-tight">
+          <h1 className="serif max-w-[900px] text-[34px] sm:text-5xl lg:text-[58px] leading-[1.08] font-semibold tracking-tight text-balance">
             {c.hero_title_1}<br />
             <span className="italic text-[#F7E6C4]">{c.hero_title_2}</span>
           </h1>
-          <p className="mt-7 max-w-[640px] text-base leading-7 text-[#F5EEE0]/75">
+          <p className="mt-5 max-w-[560px] text-sm sm:text-[15px] leading-6 sm:leading-[26px] text-[#F5EEE0]/80">
             {c.hero_desc}
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
