@@ -52,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="tr" suppressHydrationWarning>
       <body
-        className={`${cormorant.variable} ${montserrat.variable} ${jetbrainsMono.variable} font-sans bg-[#130909] text-[#F5EEE0] antialiased`}
+        className={`${cormorant.variable} ${montserrat.variable} ${jetbrainsMono.variable} font-sans bg-[#94585A] text-[#F5EEE0] antialiased`}
       >
         <Gtm />
         {children}

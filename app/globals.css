@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 0 100% 4%;
+    --background: 358 25% 46%;
     --foreground: 30 30% 93%;
 
-    --card: 0 60% 7%;
+    --card: 357 25% 51%;
     --card-foreground: 30 30% 93%;
 
-    --popover: 0 60% 7%;
+    --popover: 357 28% 42%;
     --popover-foreground: 30 30% 93%;
 
-    --primary: 350 78% 27%;
+    --primary: 357 42% 25%;
     --primary-foreground: 30 30% 93%;
 
-    --secondary: 0 50% 12%;
+    --secondary: 357 28% 42%;
     --secondary-foreground: 30 30% 93%;
 
-    --muted: 0 40% 10%;
-    --muted-foreground: 30 15% 60%;
+    --muted: 357 28% 40%;
+    --muted-foreground: 30 35% 86%;
 
-    --accent: 43 55% 54%;
-    --accent-foreground: 0 100% 4%;
+    --accent: 43 76% 76%;
+    --accent-foreground: 357 42% 18%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 10%;
 
-    --border: 30 30% 93% / 0.12;
+    --border: 30 30% 93% / 0.2;
     --input: 30 30% 93% / 0.15;
-    --ring: 43 55% 54%;
+    --ring: 43 76% 76%;
 
     --radius: 0.375rem;
     --radius-sm: 0.25rem;
@@ -45,11 +45,11 @@
     --duration-normal: 250ms;
     --duration-slow: 350ms;
 
-    --chart-1: 350 78% 27%;
-    --chart-2: 43 55% 54%;
+    --chart-1: 357 42% 25%;
+    --chart-2: 43 76% 76%;
     --chart-3: 30 30% 93%;
-    --chart-4: 0 60% 7%;
-    --chart-5: 0 50% 12%;
+    --chart-4: 358 25% 46%;
+    --chart-5: 357 28% 42%;
   }
 }
 
@@ -94,15 +94,15 @@
 /* Türkçe tarih seçici (react-day-picker v8) */
 .rdp-maksat {
   --rdp-cell-size: 36px;
-  --rdp-accent-color: #C9A84C;
-  --rdp-background-color: #7A1020;
+  --rdp-accent-color: #F0D592;
+  --rdp-background-color: #5C2629;
   color: #F5EEE0;
   font-size: 0.85rem;
 }
 .rdp-maksat .rdp-caption_label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #C9A84C;
+  color: #F0D592;
 }
 .rdp-maksat .rdp-head_cell {
   color: #F5EEE0;
@@ -111,26 +111,26 @@
   font-weight: 500;
 }
 .rdp-maksat .rdp-nav_button {
-  color: #C9A84C;
+  color: #F0D592;
 }
 .rdp-maksat .rdp-nav_button:hover {
-  background: #241112;
+  background: #A26467;
 }
 .rdp-maksat .rdp-day {
   border-radius: 4px;
   color: #F5EEE0;
 }
 .rdp-maksat .rdp-day:hover:not(.rdp-day_selected):not(.rdp-day_disabled) {
-  background: #241112;
+  background: #A26467;
 }
 .rdp-maksat .rdp-day_selected {
-  background: #7A1020 !important;
+  background: #5C2629 !important;
   color: #F5EEE0 !important;
   font-weight: 600;
 }
 .rdp-maksat .rdp-day_today {
   font-weight: 700;
-  color: #C9A84C;
+  color: #F0D592;
 }
 .rdp-maksat .rdp-day_disabled {
   color: #F5EEE0;

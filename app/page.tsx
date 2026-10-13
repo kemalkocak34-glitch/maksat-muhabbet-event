@@ -28,19 +28,19 @@ export default async function HomePage() {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#130909]/80 via-[#130909]/40 to-[#130909]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#94585A]/80 via-[#94585A]/40 to-[#94585A]" />
 
         <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 pb-20 text-center pt-28">
           {c.hero_label && (
-            <div className="mb-6 flex items-center gap-4 text-[#C9A84C]">
-              <span className="h-px w-12 bg-[#C9A84C]" />
+            <div className="mb-6 flex items-center gap-4 text-[#F0D592]">
+              <span className="h-px w-12 bg-[#F0D592]" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.3em]">{c.hero_label}</span>
-              <span className="h-px w-12 bg-[#C9A84C]" />
+              <span className="h-px w-12 bg-[#F0D592]" />
             </div>
           )}
           <h1 className="serif max-w-[900px] text-5xl sm:text-6xl lg:text-[78px] leading-[0.98] font-semibold tracking-tight">
             {c.hero_title_1}<br />
-            <span className="italic text-[#E7D4B4]">{c.hero_title_2}</span>
+            <span className="italic text-[#F7E6C4]">{c.hero_title_2}</span>
           </h1>
           <p className="mt-7 max-w-[640px] text-base leading-7 text-[#F5EEE0]/75">
             {c.hero_desc}
@@ -48,13 +48,13 @@ export default async function HomePage() {
           <div className="mt-9 flex flex-wrap justify-center gap-4">
             <Link
               href="/etkinlikler"
-              className="bg-[#7A1020] px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-[#93162A] transition"
+              className="bg-[#5C2629] px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-[#6E3134] transition"
             >
               {c.hero_cta1}
             </Link>
             <Link
               href="/rezervasyon"
-              className="border border-[#F5EEE0]/40 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-[#F5EEE0] hover:text-[#130909] transition"
+              className="border border-[#F5EEE0]/40 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-[#F5EEE0] hover:text-[#94585A] transition"
             >
               {c.hero_cta2}
             </Link>
@@ -67,14 +67,14 @@ export default async function HomePage() {
 
 
         {/* YAKLAŞAN ETKİNLİKLER */}
-        <section className="bg-[#1A0A0A] py-24">
+        <section className="bg-[#8A4D50] py-24">
           <div className="mx-auto max-w-[1200px] px-6 lg:px-10">
             <div className="mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C9A84C]">{c.home_events_label}</p>
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#F0D592]">{c.home_events_label}</p>
                 <h2 className="serif text-4xl lg:text-[52px] font-semibold">{c.home_events_title}</h2>
               </div>
-              <Link href="/etkinlikler" className="border-b border-[#C9A84C] pb-1 text-xs font-semibold uppercase tracking-[0.14em] hover:text-[#C9A84C] transition">
+              <Link href="/etkinlikler" className="border-b border-[#F0D592] pb-1 text-xs font-semibold uppercase tracking-[0.14em] hover:text-[#F0D592] transition">
                 Tüm Etkinlikler
               </Link>
             </div>
@@ -87,11 +87,11 @@ export default async function HomePage() {
         <section className="py-24">
           <div className="mx-auto max-w-[1200px] px-6 lg:px-10 mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C9A84C]">{c.home_gallery_label}</p>
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#F0D592]">{c.home_gallery_label}</p>
               <h2 className="serif text-4xl lg:text-[52px] font-semibold">{c.home_gallery_title}</h2>
             </div>
-            <Link href="/galeri" className="text-xs uppercase tracking-[0.14em] text-[#F5EEE0]/60 flex items-center gap-2 hover:text-[#C9A84C] transition">
-              Galeriyi Gör <ArrowRight size={14} className="text-[#C9A84C]" />
+            <Link href="/galeri" className="text-xs uppercase tracking-[0.14em] text-[#F5EEE0]/60 flex items-center gap-2 hover:text-[#F0D592] transition">
+              Galeriyi Gör <ArrowRight size={14} className="text-[#F0D592]" />
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 px-4">
