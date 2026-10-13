@@ -8,8 +8,10 @@ export interface GalleryPhoto {
 }
 
 export const GALLERY: GalleryPhoto[] = [
-  { id: 'mekan-ayna', imageUrl: '/venue/mekan-ayna.jpg', caption: 'Bordo duvarlar ve antik ayna', order: 1 },
-  { id: 'sofra-menu', imageUrl: '/venue/sofra-menu.jpg', caption: 'Özenli sofra düzeni', order: 2 },
-  { id: 'kismet-salon', imageUrl: '/venue/kismet-salon.jpg', caption: 'All is Kismet', order: 3 },
-  { id: 'teras-sofra', imageUrl: '/venue/teras-sofra.jpg', caption: 'Uzun sofra ve kristal lambalar', order: 4 },
+  { id: 'galeri-uzun-sofra', imageUrl: '/venue/galeri-uzun-sofra.jpg', caption: 'Uzun sofrada muhabbet', order: 1 },
+  { id: 'galeri-meze-kase', imageUrl: '/venue/galeri-meze-kase.jpg', caption: 'Sofradan bir kase meze', order: 2 },
+  { id: 'galeri-teras-lamba', imageUrl: '/venue/galeri-teras-lamba.jpg', caption: 'Kristal lambalar ve teras sofrası', order: 3 },
+  { id: 'galeri-dostlar', imageUrl: '/venue/galeri-dostlar.jpg', caption: 'Dostlarla bir gece', order: 4 },
+  { id: 'galeri-sofra-ustten', imageUrl: '/venue/galeri-sofra-ustten.jpg', caption: 'Ocakbaşı sofrası', order: 5 },
+  { id: 'galeri-kebap-tabak', imageUrl: '/venue/galeri-kebap-tabak.jpg', caption: 'Közden tabağa', order: 6 },
 ];
