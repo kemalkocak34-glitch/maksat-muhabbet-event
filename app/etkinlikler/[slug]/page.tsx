@@ -105,10 +105,10 @@ export default async function EventDetailPage({ params }: Props) {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#130909] via-[#130909]/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#94585A] via-[#94585A]/50 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-10">
             <div className="mx-auto max-w-[1200px]">
-              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C9A84C]">{dayStr}</p>
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#F0D592]">{dayStr}</p>
               <h1 className="serif text-3xl sm:text-4xl lg:text-[56px] font-semibold leading-tight">{event.title}</h1>
             </div>
           </div>
@@ -120,9 +120,9 @@ export default async function EventDetailPage({ params }: Props) {
             <div className="lg:col-span-7 space-y-10">
               {/* Meta */}
               <div className="flex flex-wrap gap-6 text-sm text-[#F5EEE0]/70">
-                <span className="flex items-center gap-2"><Calendar size={16} className="text-[#C9A84C]" /> {dateStr}</span>
-                <span className="flex items-center gap-2"><Clock size={16} className="text-[#C9A84C]" /> {event.endTime ? `${timeStr} - ${event.endTime}` : timeStr}</span>
-                <span className="flex items-center gap-2"><Users size={16} className="text-[#C9A84C]" /> {isPast ? 'Etkinlik sona erdi' : event.soldOut ? 'Doldu!' : 'Sınırlı kontenjan'}</span>
+                <span className="flex items-center gap-2"><Calendar size={16} className="text-[#F0D592]" /> {dateStr}</span>
+                <span className="flex items-center gap-2"><Clock size={16} className="text-[#F0D592]" /> {event.endTime ? `${timeStr} - ${event.endTime}` : timeStr}</span>
+                <span className="flex items-center gap-2"><Users size={16} className="text-[#F0D592]" /> {isPast ? 'Etkinlik sona erdi' : event.soldOut ? 'Doldu!' : 'Sınırlı kontenjan'}</span>
               </div>
 
               {/* Açıklama */}
@@ -132,9 +132,9 @@ export default async function EventDetailPage({ params }: Props) {
               </div>
 
               {/* Neler Dahil */}
-              <div className="bg-[#1A0A0A] border border-[#F5EEE0]/8 p-6">
+              <div className="bg-[#8A4D50] border border-[#F5EEE0]/8 p-6">
                 <h3 className="flex items-center gap-2 serif text-xl font-semibold mb-4">
-                  <Utensils size={18} className="text-[#C9A84C]" /> {event.includedHeading ?? c.event_included_heading}
+                  <Utensils size={18} className="text-[#F0D592]" /> {event.includedHeading ?? c.event_included_heading}
                 </h3>
                 <div className="text-sm text-[#F5EEE0]/65 leading-7 whitespace-pre-line">{event.whatsIncluded}</div>
               </div>
@@ -142,12 +142,12 @@ export default async function EventDetailPage({ params }: Props) {
               {/* Fiyat */}
               <div className="flex items-baseline gap-2">
                 {event.priceDetail ? (
-                  <span className="serif text-2xl sm:text-3xl font-semibold text-[#C9A84C]">{event.priceDetail}</span>
+                  <span className="serif text-2xl sm:text-3xl font-semibold text-[#F0D592]">{event.priceDetail}</span>
                 ) : event.priceLabel ? (
-                  <span className="serif text-3xl font-semibold text-[#C9A84C]">{event.priceLabel}</span>
+                  <span className="serif text-3xl font-semibold text-[#F0D592]">{event.priceLabel}</span>
                 ) : (
                   <>
-                    <span className="serif text-3xl font-semibold text-[#C9A84C]">₺{event.price.toLocaleString('tr-TR')}</span>
+                    <span className="serif text-3xl font-semibold text-[#F0D592]">₺{event.price.toLocaleString('tr-TR')}</span>
                     <span className="text-sm text-[#F5EEE0]/50">/ kişi başı</span>
                   </>
                 )}
@@ -156,7 +156,7 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* SAĞ: Rezervasyon Formu */}
             <div className="lg:col-span-5">
-              <div className="sticky top-28 bg-[#1A0A0A] border border-[#F5EEE0]/10 p-6 lg:p-8">
+              <div className="sticky top-28 bg-[#8A4D50] border border-[#F5EEE0]/10 p-6 lg:p-8">
                 <h2 className="serif text-2xl font-semibold mb-6">{c.event_reserve_heading}</h2>
                 <EventDetailClient
                   eventTitle={event.title}
@@ -170,7 +170,7 @@ export default async function EventDetailPage({ params }: Props) {
 
           {event.gallery && event.gallery.length > 0 && (
             <div className="mt-20">
-              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C9A84C]">Galeri</p>
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#F0D592]">Galeri</p>
               <h2 className="serif text-3xl lg:text-4xl font-semibold mb-8">Etkinlikten Kareler</h2>
               <EventGallery images={event.gallery} title={event.title} />
             </div>
