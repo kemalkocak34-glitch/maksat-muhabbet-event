@@ -23,7 +23,7 @@ export default async function EtkinliklerPage() {
       <main className="pt-20 min-h-screen">
         <section className="mx-auto max-w-[1200px] px-6 lg:px-10 py-20">
           <div className="mb-12">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C9A84C]">{c.events_label}</p>
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#F0D592]">{c.events_label}</p>
             <h1 className="serif text-4xl lg:text-[56px] font-semibold">{c.events_title}</h1>
           </div>
           <EventsClient events={allEvents} />
